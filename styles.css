@@ -1,0 +1,275 @@
+/* Set the basic font, background color, text color, and center everything */
+body {
+  font-family: Arial, sans-serif;
+  /* Add Ethiopia image as background with a transparent white overlay */
+  background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), url('img/ethiopia.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #333; /* Dark text color */
+  text-align: center;
+  padding: 2rem; /* Space around the content */
+}
+
+/* Style the main game container box */
+.game-container {
+  width: 100%; /* Make container responsive */
+  max-width: 400px; /* Limit width for better appearance */
+  margin: auto; /* Center horizontally */
+  background-color: #26d7ffd4; /* White background */
+  padding: 1rem; /* Space inside the box */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+/* Style the main wolf image */
+img#wolf {
+  width: 100%; /* Make image responsive */
+  max-width: 400px; /* Don't exceed original size */
+  height: auto; /* Keep aspect ratio */
+  margin-bottom: 1rem; /* Space below the image */
+}
+
+/* Style all buttons */
+button {
+  padding: 0.7rem 1.2rem; /* Space inside the button */
+  font-size: 1rem; /* Text size */
+  margin: 1rem 0; /* Space above and below */
+  background-color: #2e9df7; /* Charity: water blue */
+  color: white; /* White text */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background 0.2s;
+}
+
+/* Change button color when hovered over */
+button:hover {
+  background-color: #ffc907; /* Charity: water yellow on hover */
+  color: #2e9df7; /* Blue text for contrast on yellow */
+}
+
+/* Style the hydration and health bars (emoji size and spacing) */
+#hydration-bar,
+#health-bar {
+  font-size: 1.5rem; /* Make emojis bigger */
+  margin: 0.5rem 0; /* Space above and below bars */
+}
+
+/* Add a border and background to the water log section for emphasis */
+.water-log-section {
+  background: #fffbe6; /* Light yellow background */
+  border: 2px solid #ffc907; /* Yellow border */
+  border-radius: 10px;
+  margin: 2rem auto 0 auto;
+  max-width: 400px;
+  padding: 1rem;
+}
+
+/* Style for the stored water section */
+.stored-water-section {
+  background: #eafafc;
+  border: 2px solid #2e9df7;
+  border-radius: 10px;
+  margin: 2rem auto 0 auto;
+  max-width: 400px;
+  padding: 1rem;
+}
+
+/* Style for the stored water bar */
+#stored-water-bar {
+  font-size: 2rem;
+  letter-spacing: 0.1rem;
+  margin: 0.5rem 0 1rem 0;
+}
+
+/* Style for the give stored water button */
+#give-stored-water-btn {
+  background: #2e9df7;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+/* Disabled state for the give stored water button */
+#give-stored-water-btn:disabled {
+  background: #b3e0fc;
+  color: #fff;
+  cursor: not-allowed;
+}
+
+/* Hover effect for the give stored water button when not disabled */
+#give-stored-water-btn:not(:disabled):hover {
+  background: #ffc907;
+  color: #2e9df7;
+}
+
+/* Flip Card Section Styles */
+.flip-card-section {
+  background: #fffbe6;
+  border: 2px solid #ffc907;
+  border-radius: 10px;
+  margin: 2rem auto 0 auto;
+  max-width: 400px;
+  padding: 1rem;
+}
+.flip-card-container {
+  margin-top: 1rem;
+}
+.flip-card {
+  width: 100%;
+  max-width: 250px;
+  height: 120px;
+  margin: 0 auto 1rem auto;
+  perspective: 600px;
+  cursor: pointer;
+}
+.flip-card-front, .flip-card-back {
+  background: #2e9df7;
+  color: #fff;
+  border-radius: 8px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  position: absolute;
+  backface-visibility: hidden;
+  transition: transform 0.5s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.flip-card-front {
+  z-index: 2;
+  background: #2e9df7;
+}
+.flip-card-back {
+  transform: rotateY(180deg);
+  background: #ffc907;
+  color: #2e9df7;
+}
+.flip-card.flipped .flip-card-front {
+  transform: rotateY(180deg);
+}
+.flip-card.flipped .flip-card-back {
+  transform: rotateY(0deg);
+}
+.flip-test-section {
+  margin-top: 1rem;
+}
+#flip-feedback {
+  margin-top: 0.5rem;
+  font-weight: bold;
+}
+
+/* Scrollable Flip Card Stack */
+.flip-card-stack {
+  max-height: 300px;
+  overflow-y: auto;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 7rem; /* Increased gap for more space between cards */
+  align-items: center;
+  border: 1px solid #ffc907;
+  border-radius: 8px;
+  background: #fff;
+  padding: 0.5rem;
+}
+.flip-card-single {
+  position: relative;
+  width: 100%;
+  max-width: 250px;
+  height: 120px;
+  perspective: 600px;
+  margin-bottom: 1.5rem; /* Increased margin for more space */
+}
+.flip-card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 0.5s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+.flip-card-inner.flipped {
+  transform: rotateY(180deg);
+}
+.flip-card-front, .flip-card-back {
+  background: #2e9df7;
+  color: #fff;
+  border-radius: 8px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  position: absolute;
+  backface-visibility: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.flip-card-back {
+  background: #ffc907;
+  color: #2e9df7;
+  transform: rotateY(180deg);
+}
+.flip-card-answer-section {
+  margin-top: 0.5rem;
+  text-align: center;
+}
+.flip-card-answer-section input {
+  width: 70%;
+  padding: 0.2rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+.flip-card-answer-section button {
+  margin-left: 0.3rem;
+  padding: 0.2rem 0.7rem;
+  font-size: 0.95rem;
+}
+.flip-card-feedback {
+  margin-top: 0.3rem;
+  font-weight: bold;
+}
+
+/* Media query for better mobile/small screen support */
+@media (max-width: 500px) {
+  body {
+    padding: 0.5rem;
+    font-size: 0.95rem;
+  }
+  .game-container,
+  .water-log-section,
+  .stored-water-section {
+    max-width: 98vw;
+    padding: 0.5rem;
+  }
+  h1, h2 {
+    font-size: 1.2rem;
+  }
+  button, #give-stored-water-btn, #give-water-btn {
+    font-size: 0.95rem;
+    padding: 0.5rem 0.7rem;
+  }
+  #hydration-bar,
+  #health-bar,
+  #stored-water-bar {
+    font-size: 1.1rem;
+    word-break: break-all;
+  }
+  img#wolf, .jerry-can-img, #water-can {
+    max-width: 90vw;
+    width: 100%;
+    height: auto;
+  }
+  .jerry-can-visual {
+    width: 40px;
+    height: 55px;
+  }
+}
+
+

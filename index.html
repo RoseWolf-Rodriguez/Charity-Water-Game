@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hydration Wolf</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main>
+    <!-- Login Section -->
+    <section class="login-section">
+      <label for="username-input">Username:</label>
+      <input type="text" id="username-input" placeholder="Enter your username" />
+      <button id="login-btn">Log In</button>
+      <span id="login-status"></span>
+    </section>
+
+    <h1>Water Wolf Flash 🐺💧</h1>
+    <div class="game-container">
+      <!-- Wolf image, using the correct path to the img folder -->
+      <img src="img/wolf.gif" alt="Wolf" id="wolf" />
+      <p id="wolf-message">Hi friend! Study and stay hydrated 💛</p>
+      <button id="water-btn">Give Love 💙</button>
+    
+      <section>
+        <h2>Hydration Bar</h2>
+        <div id="hydration-bar"></div>
+      </section>
+
+      <section>
+        <h2>Health Hearts</h2>
+        <div id="health-bar"></div>
+      </section>
+    </div>
+    <!-- Water Can Image for Water Log Section -->
+    <img src="img/water-can-transparent.png" alt="Water Can" id="water-can" style="max-width:100px; margin: 1rem auto; display:block;" />
+    <!-- Water Intake Logger Section -->
+    <section class="water-log-section">
+      <h2>Log Your Water Intake</h2>
+      <p>How much water have you had today?</p>
+      <button id="add-8oz">+8 oz</button>
+      <button id="add-16oz">+16 oz</button>
+      <button id="add-24oz">+24 oz</button>
+      <div id="water-total">Today's Total: 0 oz</div>
+      <button id="reset-water-btn">Reset Water Total</button>
+    </section>
+    <!-- Stored Water Section -->
+    <section class="stored-water-section">
+      <h2>Stored Water for the Wolf</h2>
+      <div id="stored-water-bar">⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️⬜️</div>
+      <button id="give-stored-water-btn">Give Stored Water to Wolf 🐺💧</button>
+    </section>
+    <!-- Flip Card Study Section -->
+    <section class="flip-card-section">
+      <h2>Have a minute to study?</h2>
+      <label>Question: <input type="text" id="flip-question" /></label><br>
+      <label>Answer: <input type="text" id="flip-answer" /></label><br>
+      <button id="create-flip-btn">Create Flip Card</button>
+      <div class="flip-card-stack" id="flip-card-stack"></div>
+      <div id="flip-stack-feedback"></div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
