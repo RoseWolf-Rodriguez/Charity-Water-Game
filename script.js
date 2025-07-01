@@ -291,6 +291,75 @@ loginBtn.addEventListener('click', function() {
   }
 });
 
+// Log out button event
+const logoutBtn = document.getElementById('logout-btn');
+logoutBtn.addEventListener('click', function() {
+  currentUser = '';
+  loginStatus.innerText = 'Logged out.';
+  loginStatus.style.color = '#e53935';
+  flipCardStack.innerHTML = '';
+  waterLog = 0;
+  leftoverOunces = 0;
+  storedWater = 0;
+  hydration = 5; // Reset to starting value
+  health = 6;    // Reset to starting value
+  renderWaterTotal();
+  renderStoredWaterBar();
+  renderBars();
+  wolfMessage.innerText = 'Hi friend! Study and stay hydrated 💛';
+  // Optionally, clear flip card input fields
+  flipQuestionInput.value = '';
+  flipAnswerInput.value = '';
+});
+
+// --- Difficulty Selection for Flip Cards ---
+// Get references to difficulty buttons
+const flipDiffEasyBtn = document.getElementById('flip-diff-easy');
+const flipDiffMediumBtn = document.getElementById('flip-diff-medium');
+const flipDiffHardBtn = document.getElementById('flip-diff-hard');
+
+// Set default difficulty to Easy
+let flipDifficulty = 'easy';
+
+// Function to update difficulty button styles
+function updateFlipDiffButtons() {
+  // Reset all to default
+  flipDiffEasyBtn.style.background = '#b3e0fc';
+  flipDiffEasyBtn.style.color = '#2e9df7';
+  flipDiffMediumBtn.style.background = '';
+  flipDiffMediumBtn.style.color = '';
+  flipDiffHardBtn.style.background = '';
+  flipDiffHardBtn.style.color = '';
+  // Highlight selected
+  if (flipDifficulty === 'easy') {
+    flipDiffEasyBtn.style.background = '#b3e0fc';
+    flipDiffEasyBtn.style.color = '#2e9df7';
+  } else if (flipDifficulty === 'medium') {
+    flipDiffMediumBtn.style.background = '#ffc907';
+    flipDiffMediumBtn.style.color = '#2e9df7';
+  } else if (flipDifficulty === 'hard') {
+    flipDiffHardBtn.style.background = '#e53935';
+    flipDiffHardBtn.style.color = '#fff';
+  }
+}
+
+// Add event listeners for difficulty buttons
+flipDiffEasyBtn.addEventListener('click', function() {
+  flipDifficulty = 'easy';
+  updateFlipDiffButtons();
+});
+flipDiffMediumBtn.addEventListener('click', function() {
+  flipDifficulty = 'medium';
+  updateFlipDiffButtons();
+});
+flipDiffHardBtn.addEventListener('click', function() {
+  flipDifficulty = 'hard';
+  updateFlipDiffButtons();
+});
+
+// Set initial button styles
+updateFlipDiffButtons();
+
 // Function to render all flip cards in the stack
 function renderFlipCardStack() {
   flipCardStack.innerHTML = '';
@@ -327,18 +396,37 @@ function renderFlipCardStack() {
     feedbackDiv.className = 'flip-card-feedback';
     // Check answer logic
     checkBtn.addEventListener('click', function() {
+      // Use selected difficulty to determine penalty
+      let penalty = 1; // Default for easy
+      if (flipDifficulty === 'medium') {
+        penalty = 2;
+      } else if (flipDifficulty === 'hard') {
+        penalty = 3;
+      }
+      // Compare answer (case-insensitive)
       if (answerInput.value.trim().toLowerCase() === card.answer.toLowerCase()) {
-        feedbackDiv.innerText = 'Correct! 🎉';
+        // Correct answer: wolf gains 1 heart, but not above max
+        if (health < MAX_HEALTH) {
+          health++;
+          localStorage.setItem('health', health);
+          renderBars();
+        }
+        feedbackDiv.innerText = 'Correct! 🎉 The wolf gained 1 heart!';
         feedbackDiv.style.color = '#2e9df7';
       } else {
-        feedbackDiv.innerText = 'Oops! The wolf lost health and hydration.';
+        feedbackDiv.innerText = `Oops! The wolf lost ${penalty} health and ${penalty} hydration.`;
         feedbackDiv.style.color = '#e53935';
-        // Wolf loses 1 health and 1 hydration, but not below 0
-        if (health > 0) health--;
-        if (hydration > 0) hydration--;
+        // Wolf loses health and hydration, but not below 0
+        health = Math.max(0, health - penalty);
+        hydration = Math.max(0, hydration - penalty);
         localStorage.setItem('health', health);
         localStorage.setItem('hydration', hydration);
         renderBars();
+        // If health is now zero, show a pop-up
+        if (health === 0) {
+          // Show a simple browser alert for beginners
+          alert("Your Wolf is out of Hearts! Play a quick round of Flash to gain Hearts!");
+        }
       }
     });
     // Delete button
@@ -390,4 +478,3 @@ createFlipBtn.addEventListener('click', function() {
 });
 
 // ---
-

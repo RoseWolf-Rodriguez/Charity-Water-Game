@@ -13,6 +13,7 @@
       <label for="username-input">Username:</label>
       <input type="text" id="username-input" placeholder="Enter your username" />
       <button id="login-btn">Log In</button>
+      <button id="logout-btn">Log Out</button>
       <span id="login-status"></span>
     </section>
 
@@ -57,10 +58,36 @@
       <label>Question: <input type="text" id="flip-question" /></label><br>
       <label>Answer: <input type="text" id="flip-answer" /></label><br>
       <button id="create-flip-btn">Create Flip Card</button>
+      <!-- Difficulty selection buttons -->
+      <div id="flip-difficulty-select" style="margin: 1rem 0;">
+        <span>Difficulty: </span>
+        <button id="flip-diff-easy" class="flip-diff-btn" style="background:#b3e0fc; color:#2e9df7;">Easy</button>
+        <button id="flip-diff-medium" class="flip-diff-btn">Medium</button>
+        <button id="flip-diff-hard" class="flip-diff-btn">Hard</button>
+      </div>
       <div class="flip-card-stack" id="flip-card-stack"></div>
       <div id="flip-stack-feedback"></div>
     </section>
   </main>
+  <!-- Footer with charity : water info and donate banner -->
+  <footer style="margin-top:2rem; padding:1.5rem 0; background:#2e9df7; color:#fff; text-align:center;">
+    <!-- Charity : water logo -->
+    <img src="img/cw_logo.png" alt="charity : water logo" style="max-width:110px; margin-bottom:1rem; display:block; margin-left:auto; margin-right:auto;">
+    <div style="font-size:2rem; font-weight:bold; margin-bottom:1rem; letter-spacing:1px;">
+      Donate to charity : water
+    </div>
+    <div style="font-size:1.2rem; margin-bottom:0.5rem;">
+      Visit 
+      <a href="https://www.charitywater.org/main" target="_blank" style="color:#ffc907; text-decoration:underline; font-size:1.2rem;">
+        charitywater.org/main
+      </a>
+    </div>
+    <div style="font-size:1.1rem;">
+      <span style="font-size:1.5rem;">
+        Help bring clean water to those in need. Your support can change lives!
+      </span>
+    </div>
+  </footer>
   <script src="script.js"></script>
 </body>
 </html>
